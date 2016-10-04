@@ -1,0 +1,30 @@
+function palindrome(str) {
+  // Good luck!
+  // lowcase
+  str = str.toLowerCase();
+  str = str.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"");
+  str = str.replace(/\s/g,'');
+  
+  var fbw = [];
+  var ffw = [];
+  
+  fbw = str.split('');
+  ffw = str.split('');
+  fbw.reverse();
+  
+  var w = 0;
+  
+  for (var i=0; i<ffw.length; i++) {
+    if (ffw[i] !== fbw[i])
+      w +=1;
+  }
+  
+  if (w === 0)
+    return true;
+  
+  return false; 
+}
+
+
+
+palindrome("race car");
