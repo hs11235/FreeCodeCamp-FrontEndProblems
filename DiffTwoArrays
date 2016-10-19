@@ -1,0 +1,33 @@
+
+function diffArray(arr1, arr2) {
+  var newArr = [];
+  
+  for (var a=0; a<arr1.length; a++) {
+    newArr.push(arr1[a]);
+  }
+  
+  // Same, same; but different.
+  
+  for (var i=newArr.length-1; i>=0; i--){
+    for (var j=0; j<arr2.length; j++) {
+      if (newArr[i] === arr2[j]) {
+        newArr.splice(i, 1);
+      }
+    }
+  }
+  
+  var newArr1 = [];
+  newArr1 = arr2;
+  
+  for (var k=newArr1.length-1; k>=0; k--){
+    for (var l=0; l<arr1.length; l++) {
+      if (newArr1[k] === arr1[l]) {
+        newArr1.splice(k, 1);
+      }
+    }
+  }
+  
+  return newArr1.concat(newArr);
+}
+
+diffArray([1, 2, 3, 5], [1, 2, 3, 4, 5]);
