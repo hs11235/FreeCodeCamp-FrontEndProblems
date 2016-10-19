@@ -1,0 +1,35 @@
+
+function filter(value) {
+  return value !== 0;
+}
+
+function bouncer(arr) {
+  // Don't show a false ID to this bouncer.
+  var filtered = arr.filter(function(val) {
+    return val !== 0;
+  });
+  
+  filtered = filtered.filter(function(val) {
+    return val !== "";
+  });
+  
+  filtered = filtered.filter(function(val) {
+    return val !== false;
+  });
+  
+  filtered = filtered.filter(function(val) {
+    return val !== null;
+  });
+  
+  filtered = filtered.filter(function(val) {
+    return val !== undefined;
+  });
+  
+  filtered = filtered.filter(function(val) {
+    return val || isNaN(val) === false;
+  });
+  
+  return filtered;
+}
+
+bouncer([7, "ate", "", false, 9, null]);
