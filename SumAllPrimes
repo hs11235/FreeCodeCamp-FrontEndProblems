@@ -1,0 +1,25 @@
+//
+function prime(n) {
+
+  var j=2;
+  while (j<n) {
+    if (n % j === 0)
+      return false;
+    j++;
+  }
+  return true;
+}
+
+function sumPrimes(num) {
+  
+  var total = 0;
+  
+  for (var i=num; i>1; i--) {
+    if (prime(i)===true)
+      total+=i;
+  }
+  
+  return total;
+}
+
+sumPrimes(977);
