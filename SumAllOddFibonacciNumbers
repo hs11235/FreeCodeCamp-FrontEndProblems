@@ -1,0 +1,20 @@
+
+function sumFibs(num) {
+  
+  var total = 2;
+  var fib1 = 1;
+  var fib2 = 1;
+  
+  while (fib2 < num) {
+    var temp = fib2;
+    fib2+=fib1;
+    fib1 = temp;
+    
+    if(fib2 % 2 === 1 && fib2<=num)
+      total+=fib2;
+  }
+  
+  return total;
+}
+
+sumFibs(10);
