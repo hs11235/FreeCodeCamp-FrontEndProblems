@@ -1,0 +1,28 @@
+
+function whatIsInAName(collection, source) {
+  // What's in a name?
+  var arr = [];
+  // Only change code below this line
+
+  var sIndex = Object.keys(source);
+  
+  for (var i=0; i<collection.length; i++) {
+    var l=0;
+    for (var j=0; j<sIndex.length; j++) {
+      if(collection[i][sIndex[j]] && collection[i][sIndex[j]] === source[sIndex[j]])
+        l++;
+    }
+
+    if (l === sIndex.length)
+      arr.push(collection[i]);
+  }
+  
+  // Only change code above this line
+  return arr;
+}
+
+//whatIsInAName([{ "a": 1 }, { "a": 1 }, { "a": 1, "b": 2 }], { "a": 1 });
+
+whatIsInAName([{ first: "Romeo", last: "Montague" }, { first: "Mercutio", last: null }, { first: "Tybalt", last: "Capulet" }], { last: "Capulet" });
+
+//whatIsInAName([{ "a": 1, "b": 2 }, { "a": 1 }, { "a": 1, "b": 2, "c": 2 }], { "a": 1, "c": 2 });
