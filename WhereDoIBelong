@@ -1,0 +1,28 @@
+
+function getIndexToIns(arr, num) {
+  // Find my place in this sorted array.
+  
+  var j = 0;
+  while (j < arr.length-1) {
+    for (var i=0; i<arr.length; i++) {
+      if (arr[i] > arr[i+1]) {
+        var temp = arr[i];
+        arr[i] = arr[i+1];
+        arr[i+1] = temp;
+      }
+    }
+    j++;
+  }
+  
+  j=0;
+  
+  while (j < arr.length) {
+    if (num <= arr[j])
+      break;
+    j++;
+  }
+  
+  return j;
+}
+
+getIndexToIns([40, 60, 52, 79, 1, 56, 2], 50);
