@@ -1,0 +1,28 @@
+
+function translatePigLatin(str) {
+  
+  var arr = str.split('');
+  var vowels = ["a", "e", "i", "o", "u"];
+  
+  // 'i' is position os first vowel
+  
+  var i=0;
+  while (vowels.includes(arr[i]) === false)
+    i++;
+  
+  if (i===0) {
+    //case where vowel at start
+    str+= "way";
+  } else {
+    // case where const at start
+    var start = str.slice(0,i);
+    str = str.substr(i);
+    str+=start;
+    str+="ay";
+    return str;
+  }
+  
+  return str;
+}
+
+translatePigLatin("consonant");
