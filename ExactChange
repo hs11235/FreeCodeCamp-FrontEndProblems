@@ -1,0 +1,135 @@
+
+function checkCashRegister(price, cash, cid) {
+  var change;
+  
+  
+  
+  var arr = divide(cash - price, cid);
+  
+  // Here is your change, ma'am.
+  return arr;
+}
+
+function divide(change, cid) {
+  
+  var arr = [0,0,0,0,0,0,0,0,0];
+  var temp;
+  var total = 0;
+  var ret = [];
+  
+  for (var i=0; i<cid.length; i++) {
+    total += cid[i][1];
+  }
+  
+  if (total == change)
+    return "Closed";
+  
+  if (change >= 100.0) {
+    temp = Math.min(cid[cid.length-1][1] / 100, Math.floor(change / 100));
+    arr[arr.length-1] = temp;
+    change -= temp * 100.00;
+    change = round(change);
+    if (temp > 0)
+      ret.push(["ONE HUNDRED", temp * 100]);
+  }
+  
+  if (change >= 20) {
+    temp = Math.min(cid[cid.length-2][1] / 20, Math.floor(change / 20));
+    arr[arr.length-2] = temp;
+    change -= temp * 20;
+    change = round(change);
+    if(temp>0)
+      ret.push(["TWENTY", temp * 20.0]);
+  }
+  
+  if (change >= 10) {
+    temp = Math.min(cid[cid.length-3][1] / 10, Math.floor(change / 10));
+    arr[arr.length-3] = temp;
+    change -= temp * 10;
+    change = round(change);
+    if (temp>0)
+      ret.push(["TEN", temp * 10.0]);
+  }
+  
+  if (change >= 5) {
+    temp = Math.min(cid[cid.length-4][1] / 5, Math.floor(change / 5));
+    arr[arr.length-4] = temp;
+    change -= temp * 5;
+    change = round(change);
+    if (temp > 0)
+      ret.push(["FIVE", temp * 5.0]);    
+  }
+  
+  if (change >= 1) {
+    temp = Math.min(cid[cid.length-5][1] / 1, Math.floor(change / 1));
+    arr[arr.length-5] = temp;
+    change -= temp * 1;
+    change = round(change);
+    if (temp>0)
+      ret.push(["ONE", temp * 1.0]);
+  }
+  
+  if (change >= 0.25) {
+    temp = Math.min(cid[cid.length-6][1] / 0.25, Math.floor(change / 0.25));
+    arr[arr.length-6] = temp;
+    change -= temp * 0.25;
+    change = round(change);
+    if (temp>0)
+      ret.push(["QUARTER", temp * 0.25]);
+  }
+  
+  if (change >= 0.1) {
+    temp = Math.min(cid[cid.length-7][1] / 0.1, Math.floor(change / 0.1));
+    arr[arr.length-7] = temp;
+    change -= temp * 0.1;
+    change = round(change);
+    if (temp>0)
+      ret.push(["DIME", temp * 0.1]);
+  }
+  
+  if (change >= 0.05) {
+    temp = Math.min(cid[cid.length-8][1] / 0.05, Math.floor(change / 0.05));
+    arr[arr.length-8] = temp;
+    change -= temp * 0.05;
+    change = round(change);
+    if (temp>0)
+      ret.push(["NICKEL", temp * 0.05]);
+  }
+  
+  if (change >= 0.01) {
+    temp = Math.min(cid[cid.length-9][1] / 0.01, Math.floor(change / 0.01));
+    arr[arr.length-9] = temp;
+    change -= temp * 0.01;
+    change = round(change);
+    if (temp>0)
+      ret.push(["PENNY", temp * 0.01]);
+  }
+  
+  if (change !== 0)
+    return "Insufficient Funds";
+  
+  
+  
+  return ret;
+  
+}
+
+function round(n) {
+  n *= 100;
+  n = Math.round(n);
+  n /= 100;
+  return n;
+}
+
+// Example cash-in-drawer array:
+// [["PENNY", 1.01],
+// ["NICKEL", 2.05],
+// ["DIME", 3.10],
+// ["QUARTER", 4.25],
+// ["ONE", 90.00],
+// ["FIVE", 55.00],
+// ["TEN", 20.00],
+// ["TWENTY", 60.00],
+// ["ONE HUNDRED", 100.00]]
+
+checkCashRegister(19.50, 20.00, [["PENNY", 1.01], ["NICKEL", 2.05], ["DIME", 3.10], ["QUARTER", 4.25], ["ONE", 90.00], ["FIVE", 55.00], ["TEN", 20.00], ["TWENTY", 60.00], ["ONE HUNDRED", 100.00]]);
