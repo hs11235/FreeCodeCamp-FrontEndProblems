@@ -1,0 +1,32 @@
+
+function pairElement(str) {
+  
+  var arr = str.split('');
+  var result = [];
+  
+  for (var i=0; i<str.length; i++) {
+    var temp = [];
+    switch (arr[i]) {
+      case "A":
+        temp = ["A","T"];
+        result.push(temp);
+        break;
+      case "T":
+        temp = ["T","A"];
+        result.push(temp);
+        break;
+      case "C":
+        temp = ["C","G"];
+        result.push(temp);
+        break;
+      case "G":
+        temp = ["G","C"];
+        result.push(temp);
+        break;
+    }
+  }
+  
+  return result;
+}
+
+pairElement("AGCG");
