@@ -1,0 +1,19 @@
+
+function mutation(arr) {
+  
+  var str = arr[1];
+  str = str.toLowerCase();
+  var split = str.split('');
+  
+  var str2 = arr[0];
+  str2 = str2.toLowerCase();
+  
+  for (var i=0; i<split.length; i++) {
+    if (str2.indexOf(split[i]) === -1)
+      return false;
+  }
+  
+  return true;
+}
+
+mutation(["hello", "Hello"]);
