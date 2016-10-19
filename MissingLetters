@@ -1,0 +1,24 @@
+
+function fearNotLetter(str) {
+  
+  var alphaStr = "abcdefghijklmnopqrstuvwxyz";
+  var alphaArr = alphaStr.split('');
+  
+  var arr = str.split('');
+  
+  //find where str starts
+  
+  for (var i=0; i<alphaArr.length; i++) {
+    if (alphaArr[i] === arr[0])
+      break;
+  }
+    
+  for (var j=i; j<i+arr.length; j++) {
+    if (arr[j-i] !== alphaArr[j])
+      return alphaArr[i+j];
+  }
+  
+  return undefined;
+}
+
+fearNotLetter("bcd");
