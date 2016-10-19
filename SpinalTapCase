@@ -1,0 +1,32 @@
+//
+function spinalCase(str) {
+  // "It's such a fine line between stupid, and clever."
+  // --David St. Hubbins
+  
+  var arr = str.split("");
+  
+  arr[0] = arr[0].toLowerCase();
+  
+  for (var i=1; i<arr.length; i++) {
+    if(arr[i] === arr[i].toUpperCase() && arr[i-1] !== " " && arr[i] !== " " && arr[i] !== "_" && arr[i-1] !== "_" && arr[i] !=="-" && arr[i-1] !== "-") {
+      arr[i] = arr[i].toLowerCase();
+      arr.splice(i,0," ");
+    } else
+      arr[i] = arr[i].toLowerCase();
+    if(i===100)
+      break;
+  }
+  
+  for (var j=0; j<arr.length; j++) {
+    if (arr[j] === " " || arr[j] === "_") {
+      arr[j] = "-";
+    }
+  }
+  
+  str = arr.join();
+  str = str.replace(/,/g, "");
+  
+  return str;
+}
+
+spinalCase("Teletubbies say Eh-oh");
