@@ -1,0 +1,106 @@
+
+function makeFriendlyDates(arr) {
+  
+  var arr1 = arr[0].split('-');
+  var arr2 = arr[1].split('-');
+  for (var i=0; i<3; i++) {
+    arr1[i] = parseInt(arr1[i]);
+    arr2[i] = parseInt(arr2[i]);
+  }
+  
+  arr = ["", ""];
+  
+  // build first date value
+  // month and date always shown
+  arr[0] = getMonth(arr1[1]) + arr1[2] + getSuffix(arr1[2]);
+  
+  // show comma+ year iff year != 2016 || sameYear = false
+  if (arr1[0] !== 2016 || !sameYear(arr1, arr2))
+    arr[0] += ", " + arr1[0];
+  
+  // if date1==date2 return single item array
+  if (arr1.toString() === arr2.toString()) {
+    return arr.splice(0,1);
+  }
+  
+  // build second date
+  // show month iff month1 !== month2 || year1 != year2
+  if (arr1[1] !== arr2[1] || arr1[0] !== arr2[0])
+    arr[1] += getMonth(arr2[1]);
+  
+  // always show day+suffix
+  arr[1] += arr2[2] + getSuffix(arr2[2]);
+  
+  // show year2 iff sameyear is false
+  if (!sameYear(arr1, arr2))
+    arr[1] += ", " + arr2[0];
+  
+  return arr;
+}
+
+function sameYear(arr1, arr2) {
+  
+  if (arr2[0] - arr1[0] > 1)
+    return false;
+  
+  if (arr2[0] - arr1[0] == 1) {
+    
+    if (arr2[1] - arr1[1] > 0)
+      return false;
+    
+    if (arr2[1] - arr1[1] === 0 && arr2[2] - arr1[2] >= 0)
+      return false;
+  }
+  
+  return true;
+}
+
+function getMonth(n) {
+  
+  switch(n) {
+    case 1:
+      return "January ";
+    case 2:
+      return "February ";
+    case 3:
+      return "March ";
+    case 4:
+      return "April ";
+    case 5:
+      return "May ";
+    case 6:
+      return "June ";
+    case 7:
+      return "July ";
+    case 8:
+      return "August ";
+    case 9:
+      return "September ";
+    case 10:
+      return "October ";
+    case 11:
+      return "November ";
+    case 12:
+      return "December ";
+  }
+}
+
+function getSuffix(n) {
+  
+  switch(n) {
+    case 1:
+      return "st";
+    case 2:
+      return "nd";
+    case 3:
+      return "rd";
+    default:
+      return "th";
+  }
+}
+
+//makeFriendlyDates(['2016-07-01', '2016-07-04']);
+//makeFriendlyDates(["2022-09-05", "2023-09-04"]);
+//makeFriendlyDates(["2016-12-01", "2017-02-03"]);
+makeFriendlyDates(["2018-01-13", "2018-01-13"]);
+//makeFriendlyDates(["2016-12-01", "2018-02-03"]);
