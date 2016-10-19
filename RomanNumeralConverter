@@ -1,0 +1,100 @@
+
+function convert(n) {
+  
+  if (n === 0) {
+    return "";
+  }
+    
+    switch (n) {
+      case 1:
+        return "I";
+      case 2:
+        return "II";
+      case 3:
+        return "III";
+      case 4:
+        return "IV";
+      case 5:
+        return "V";
+      case 6:
+        return "VI";
+      case 7:
+        return "VII";
+      case 8:
+        return "VIII";
+      case 9:
+        return "IX";
+        case 10:
+          return "X";
+        case 20:
+          return "XX";
+        case 30:
+          return "XXX";
+        case 40:
+          return "XL";
+        case 50:
+          return "L";
+        case 60:
+          return "LX";
+        case 70:
+          return "LXX";
+        case 80:
+          return "LXXX";
+        case 90:
+          return "XC";
+      case 100:
+        return "C";
+      case 200:
+        return "CC";
+      case 300: 
+        return "CCC";
+      case 400:
+        return "CD";
+      case 500:
+        return "D";
+      case 600:
+        return "DC";
+      case 700:
+        return "DCC";
+      case 800:
+        return "DCCC";
+      case 900:
+        return "CM";
+      case 1000:
+        return "M";
+      case 2000:
+        return "MM";
+      case 3000:
+        return "MMM";
+  }
+}
+
+function convertToRoman(num) {
+  
+  var a = Math.floor(num / 1000);
+  var A = num % 1000;
+  
+  var b = Math.floor(A / 100);
+  var B = A % 100;
+  
+  var c = Math.floor(B / 10);
+  var C = B % 10;
+  
+  var r = C;
+  
+  var thou = a * 1000;
+  var hund = b * 100;
+  var tens = c * 10;
+  var sing = r;
+  
+  var z = convert(thou);
+  var y = convert(hund);
+  var x = convert(tens);
+  var w = convert(sing);
+  
+  var str = z + y + x + w;
+  
+ return str;
+}
+
+convertToRoman(2);
