@@ -1,0 +1,26 @@
+
+function rot13(str) { // LBH QVQ VG!
+  
+  var arr = [];
+  var str2 = '';
+  
+  for (var i=0; i<str.length; i++) {
+    arr[i] = str.charCodeAt(i); 
+    
+    if (65 <= arr[i] && arr[i] <= 90) {
+      arr[i] -= 65;
+      arr[i] += 13;
+      arr[i] = arr[i] % 26;
+      arr[i] += 65;
+    }  
+  }
+  
+  for (var j=0; j<str.length; j++) {
+    str2 = str2.concat(String.fromCharCode(arr[j]));
+  }
+  
+  return str2; 
+}
+
+// Change the inputs below to test
+rot13("SERR CVMMN!");
