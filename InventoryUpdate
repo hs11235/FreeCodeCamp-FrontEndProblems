@@ -1,0 +1,68 @@
+
+function updateInventory(arr1, arr2) {
+    // All inventory must be accounted for or you're fired!
+  
+  for (var i=0; i<arr2.length; i++) {
+    
+    var j = contains(arr2[i][1], arr1);
+    if (j !== false) {
+      
+      arr1[j][0] += arr2[i][0];
+      
+    } else {
+      
+      arr1.push(arr2[i]);
+    }
+  }
+  
+  arr1 = sort(arr1);
+  
+  return arr1;
+}
+
+function contains(item, arr) {
+  
+  for (var i=0; i<arr.length; i++) {
+    if (item == arr[i][1])
+      return i;
+  }
+  
+  return false;
+}
+
+function sort(arr) {
+  
+  var temp = [];
+  
+  for (var i=arr.length-1; i>=0; i--) {
+    
+    for (var j=0; j<i; j++) {
+      
+      if (arr[j][1].charCodeAt(0) > arr[j+1][1].charCodeAt(0)) {
+        
+        temp = arr[j];
+        arr[j] = arr[j+1];
+        arr[j+1] = temp;
+      }
+    }
+  }
+  
+  return arr;
+}
+
+// Example inventory lists
+var curInv = [
+    [21, "Bowling Ball"],
+    [2, "Dirty Sock"],
+    [1, "Hair Pin"],
+    [5, "Microphone"]
+];
+
+var newInv = [
+    [2, "Hair Pin"],
+    [3, "Half-Eaten Apple"],
+    [67, "Bowling Ball"],
+    [7, "Toothpaste"]
+];
+
+updateInventory(curInv, newInv);
