@@ -1,0 +1,28 @@
+
+function confirmEnding(str, target) {
+  // "Never give up and good luck will find you."
+  // -- Falcor
+  
+  var arr = [];
+  var arr2 = [];
+  
+  arr = str.split('');
+  arr2 = target.split('');
+  
+  arr.reverse();
+  arr2.reverse();
+  
+  var j = 0;
+  
+  for (var i=0; i<arr2.length ; i++) {
+    if (arr[i] !== arr2[i])
+      j+=1;
+  }
+  
+  if (j === 0)
+    return true;
+  
+  return false;
+}
+
+confirmEnding("Bastian", "n");
