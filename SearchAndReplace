@@ -1,0 +1,35 @@
+
+function myReplace(str, before, after) {
+  
+  // sort out caps/lowercase
+  
+  var bArr = before.split('');
+  var aArr = after.split('');
+  
+  if (bArr[0] === bArr[0].toUpperCase()) {
+    aArr[0] = aArr[0].toUpperCase();
+  } else if (bArr[0] === bArr[0].toLowerCase()) {
+    aArr[0] = aArr[0].toLowerCase();
+  }
+  
+  before = bArr.join();
+  after = aArr.join();
+  
+  before = before.replace(/\,/g, "");
+  after = after.replace(/\,/g, "");
+  
+  //take out commas
+  
+  var arr = str.split(" ");
+  
+  for (var i=0; i<arr.length; i++) {
+    if (arr[i] === before)
+      arr[i] = after;
+  }
+  
+  str = arr.join(" ");
+  
+  return str;
+}
+
+myReplace("A quick brown fox Jumped over the lazy dog", "Jumped", "leaped");
