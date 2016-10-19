@@ -1,0 +1,45 @@
+
+function permAlone(str) {
+  
+  var s = "baa";
+  var arr = [];
+  
+  permute(str, arr, 0, str.length-1);
+  
+  return arr.length;
+}
+
+function repeat(str) {
+  
+  for (var i=0; i<str.length-1; i++) {
+    
+    if (str.charAt(i) == str.charAt(i+1))
+      return false;
+  }
+  return true;
+}
+
+function swap(str, a, b) {
+  
+  var temp = str.charAt(a);
+  str = str.substr(0,a) + str.charAt(b) + str.substr(a+1);
+  str = str.substr(0,b) + temp + str.substr(b+1);
+  return str;
+}
+// string, array of completed strings
+function permute(str, arr, l, r) {
+  
+  if (l === r && repeat(str)) 
+    arr.push(str);
+  else {
+    
+    for (var i=l; i<=r; i++) {
+      
+      str = swap(str, l, i);
+      permute(str, arr, l+1, r);
+      str = swap(str, l, i);
+    }
+  }
+}
+
+permAlone('aab');
