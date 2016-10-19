@@ -1,0 +1,26 @@
+
+function filt(val, arg) {
+  return val !== arg;
+}
+
+function destroyer(arr) {
+  // Remove all the values
+  var target = [];
+  
+  target = arguments[0];
+  
+  var args = arguments.length;
+  
+  for (var i=1; i<arguments.length; i++) {
+    var temp = [];
+    for (var j=0; j<target.length; j++) {
+      if (target[j] !== arguments[i])
+        temp.push(target[j]);
+    }
+    target = temp;
+  }
+  
+  return target;
+}
+
+destroyer([1, 2, 3, 1, 2, 3], 2, 3);
